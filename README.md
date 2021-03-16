@@ -2,6 +2,8 @@
 repo to show spring cloud stream kafka issue
 
 
+# Install Kafkacat
+* https://github.com/edenhill/kafkacat
 
 # Steps to reproduce
 
