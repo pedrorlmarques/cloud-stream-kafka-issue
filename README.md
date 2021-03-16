@@ -9,10 +9,10 @@ repo to show spring cloud stream kafka issue
 
 * insert data into kafka topic
 
-echo "1:peter" | kafkacat -b localhost:9092 -t hello.topic -Z -K:
-echo "2:" | kafkacat -b localhost:9092 -t hello.topic -Z -K:
-echo "3:marie" | kafkacat -b localhost:9092 -t hello.topic -Z -K:
-echo "4:rosie" | kafkacat -b localhost:9092 -t hello.topic -Z -K:
+ - echo "1:peter" | kafkacat -b localhost:9092 -t hello.topic -Z -K:
+ - echo "2:" | kafkacat -b localhost:9092 -t hello.topic -Z -K:
+ - echo "3:marie" | kafkacat -b localhost:9092 -t hello.topic -Z -K:
+- echo "4:rosie" | kafkacat -b localhost:9092 -t hello.topic -Z -K:
 
 * start the spring boot application 
 
