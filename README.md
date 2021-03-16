@@ -7,7 +7,11 @@ repo to show spring cloud stream kafka issue
 
 # Steps to reproduce
 
-* start the kafka cluster - > docker-compose up
+* start the kafka cluster
+
+```
+docker-compose up
+```
 
 * insert data into kafka topic
 
@@ -23,7 +27,9 @@ repo to show spring cloud stream kafka issue
 
 * call the metrics endpoint and assert that after reading all messages on the topic the unconsumed messages is 2.
 
+```
 curl http://localhost:8080/actuator/metrics/spring.cloud.stream.binder.kafka.offset | json_pp
+```
 
 ```
 {
