@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: cloud.stream.service
+  cloud:
+    stream:
+      function:
+        definition: hello|reverse|acknowledgment
+      bindings:
+        helloreverseacknowledgment-in-0:
+          binder: kafka
+          destination: hello.topic
+          group: ${spring.application.name}-hello
+          consumer:
+            maxAttempts: 1
+        helloreverseacknowledgment-out-0:
+          binder: kafka
+          destination: hello.reverse.topic
+      kafka:
+        binder:
+          consumer-properties:
+            key.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+          producer-properties:
+            key.serializer: org.apache.kafka.common.serialization.StringSerializer
+        bindings:
+          helloreverseacknowledgment-in-0:
+            consumer:
+              ackMode: MANUAL_IMMEDIATE
+              startOffset: earliest
+              resetOffsets: true
+              enableDlq: true
+              dlqName: hello.topic.dlq
+              configuration:
+                max.poll.records: 15
+                max.poll.interval.ms: 360000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
